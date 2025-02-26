@@ -2,7 +2,7 @@
     <% if(user) { %>
         <a href="/users/<%= user._id %>/games">Your Games</a>
         <a href="/auth/sign-out">Sign Out</a>
-    <% } else {%>
+    <% } else { %>
         <a href="/auth/sign-in">Sign In</a>
         <a href="/auth/sign-up">Sign Up</a>
     <% } %>

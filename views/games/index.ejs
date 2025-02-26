@@ -8,5 +8,11 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Your Games</h1>
+    <a href="/users/<%=user._id%>/games/new">Add a Game</a>
+    <ul>
+        <% games.forEach((game) => { %>
+        <li><%= game.name %> on <%= game.console %></li>
+        <% }) %>
+    </ul>
 </body>
 </html>
