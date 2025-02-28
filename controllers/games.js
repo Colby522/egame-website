@@ -30,6 +30,17 @@ router.get('/:gameId', async (req, res) => {
     }
 })
 
+router.get('/:gameId/edit', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const game = currentUser.games.id(req.params.gameId)
+        res.render('games/edit.ejs', {game: game})
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
 router.post('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
@@ -48,6 +59,19 @@ router.delete('/:gameId', async (req, res) => {
         currentUser.games.id(req.params.gameId).deleteOne()
         await currentUser.save()
         res.redirect(`/users/${currentUser._id}/games`)
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
+router.put('/:gameId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const game = currentUser.games.id(req.params.gameId)
+        game.set(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games/${req.params.gameId}`)
     } catch (error) {
         console.log(error)
         res.redirect('/')

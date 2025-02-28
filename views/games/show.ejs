@@ -11,6 +11,10 @@
     <p>Condition: <%= game.condition %></p>
     <p>Price: $<%- game.price %></p>
 
+    <a href="/users/<%= user._id %>/games/<%= game._id %>/edit">
+        Edit this Game
+    </a>
+
     <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=DELETE"
         method="POST">
         <button type="submit">Delete this game</button>
