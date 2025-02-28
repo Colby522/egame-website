@@ -14,7 +14,9 @@
             <% games.forEach((game) => { %>
                 <% if (game.forSale) { %>
                     <li>
-                        <%= game.name %> for the <%= game.console %>
+                        <a href="/shop/<%= user._id %>/<%= game._id %>">
+                        <%= game.name %> for the <%= game.console %>: $<%= game.price %>
+                        </a>
                     </li>
                 <% } %>
             <% }) %>
