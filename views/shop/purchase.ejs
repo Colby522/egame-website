@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchasing <%= game.name %></title>
+</head>
+<body>
+    <h1><%= game.name %></h1>
+    <h3>Credit Card Info</h3>
+        <p>Card Holder Full Name:</p>
+        <p>Credit Card Number:</p>
+        <p>Expiration Date:</p>
+        <p>CVV:</p>
+        <p>Zip Code</p>
+
+    <h3>Mailing Info</h3>
+        <p>Address Line 1:</p>
+        <p>Address Line 2(Optional):</p>
+        <p>State:</p>
+        <p>Zip Code</p>
+    
+    <p>Total: $<%= game.price %></p>
+    <form action="/shop/<%= user._id %>/<%= game._id %>?_method=PUT" method="POST">
+        <button type="submit">Purchase</button>
+    </form>
+</body>
+</html>

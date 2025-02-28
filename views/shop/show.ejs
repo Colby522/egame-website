@@ -11,8 +11,8 @@
     <p>$<%= game.price %></p>
     <p>Posted for sale by <%= user.username %></p>
 
-    <form action="" method="POST">
-        <button type="submit">Buy this Game</button>
-    </form>
+    <a href="/shop/<%= user._id %>/<%= game._id %>/purchase">
+        Buy This Game
+    </a>
 </body>
 </html>
