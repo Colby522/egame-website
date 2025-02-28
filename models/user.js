@@ -14,10 +14,9 @@ const gameSchema = new mongoose.Schema({
       enum: ['unopened', 'good', 'okay', 'bad', 'doesntWork'],
       required: true,
   },
-  // forSale: {
-  //     type: Boolean,
-  //     required: true,
-  // },
+  forSale: {
+      type: Boolean,
+  },
   price: {
       type: Number,
       required: true,

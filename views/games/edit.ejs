@@ -45,8 +45,8 @@
         </option>
         </select>
         
-        <!-- <label for="forSale">Make this game for sale?</label>
-        <input type="checkbox" name="forSale" id="forSale" /> -->
+        <label for="forSale">Make this game for sale?</label>
+        <input type="checkbox" name="forSale" id="forSale" <% if (game.forSale) { %>checked<% } %>/>
 
         <label for="price">Price: $</label>
         <input type="text" name="price" id="price" value="<%= game.price %>"/>

@@ -44,6 +44,11 @@ router.get('/:gameId/edit', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
+        if (req.body.forSale === 'on') {
+            req.body.forSale = true
+        } else {
+            req.body.forSale = false
+        }
         currentUser.games.push(req.body)
         await currentUser.save()
         res.redirect(`/users/${currentUser._id}/games`)
@@ -69,6 +74,11 @@ router.put('/:gameId', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const game = currentUser.games.id(req.params.gameId)
+        if (req.body.forSale === 'on') {
+            req.body.forSale = true
+        } else {
+            req.body.forSale = false
+        }
         game.set(req.body)
         await currentUser.save()
         res.redirect(`/users/${currentUser._id}/games/${req.params.gameId}`)

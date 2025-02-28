@@ -9,6 +9,11 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1><%= game.name %> on the <%= game.console %></h1>
     <p>Condition: <%= game.condition %></p>
+    <% if (game.forSale) { %>
+        <p>This game is for sale.</p>
+    <% } else { %>
+        <p>This game is not for sale</p>
+    <% } %>
     <p>Price: $<%- game.price %></p>
 
     <a href="/users/<%= user._id %>/games/<%= game._id %>/edit">
