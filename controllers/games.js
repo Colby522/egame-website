@@ -19,10 +19,33 @@ router.get('/new', async (req, res) => {
     res.render('games/new.ejs')
 })
 
+router.get('/:gameId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const game = currentUser.games.id(req.params.gameId)
+        res.render('games/show.ejs', {game: game})
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
 router.post('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         currentUser.games.push(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games`)
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
+router.delete('/:gameId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        currentUser.games.id(req.params.gameId).deleteOne()
         await currentUser.save()
         res.redirect(`/users/${currentUser._id}/games`)
     } catch (error) {
