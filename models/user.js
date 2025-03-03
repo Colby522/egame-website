@@ -36,7 +36,5 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-// const Game = mongoose.model('Game', gameSchema)
 
 module.exports = User;
-// module.exports = Game
