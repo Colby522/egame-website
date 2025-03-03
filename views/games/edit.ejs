@@ -3,55 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Editing <%= game.name %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Edit <%= game.name %> on the <%= game.console %></h1>
-    <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" 
-        method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<%= game.name %>"/>
+    <div class="edit-body">
+        <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" 
+            method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="<%= game.name %>"/>
 
-        <label for="console">Console:</label>
-        <input type="text" name="console" id="console" value="<%= game.console %>"/>
+            <label for="console">Console:</label>
+            <input type="text" name="console" id="console" value="<%= game.console %>"/>
 
-        <label for="condition">Condition?</label>
-        <select name="condition" id="condition">
-            <option 
-            value="unopened"
-            <%= game.condition === 'unopened' ? 'selected' : '' %>>
-            Unopened
-        </option>
-            <option 
-            value="good"
-            <%= game.condition === 'good' ? 'selected' : '' %>>
-            Good
-        </option>
-            <option 
-            value="okay"
-            <%= game.condition === 'okay' ? 'selected' : '' %>>
-            Okay
-        </option>
-            <option 
-            value="bad"
-            <%= game.condition === 'bad' ? 'selected' : '' %>>
-            Bad
-        </option>
-            <option 
-            value="doesntWork"
-            <%= game.condition === 'doesntWork' ? 'selected' : '' %>>
-            Doesn't Work
-        </option>
-        </select>
+            <label for="condition">Condition?</label>
+            <select name="condition" id="condition">
+                <option 
+                value="unopened"
+                <%= game.condition === 'unopened' ? 'selected' : '' %>>
+                Unopened
+            </option>
+                <option 
+                value="good"
+                <%= game.condition === 'good' ? 'selected' : '' %>>
+                Good
+            </option>
+                <option 
+                value="okay"
+                <%= game.condition === 'okay' ? 'selected' : '' %>>
+                Okay
+            </option>
+                <option 
+                value="bad"
+                <%= game.condition === 'bad' ? 'selected' : '' %>>
+                Bad
+            </option>
+                <option 
+                value="doesntWork"
+                <%= game.condition === 'doesntWork' ? 'selected' : '' %>>
+                Doesn't Work
+            </option>
+            </select>
         
-        <label for="forSale">Make this game for sale?</label>
-        <input type="checkbox" name="forSale" id="forSale" <% if (game.forSale) { %>checked<% } %>/>
+            <label for="forSale">Make this game for sale?</label>
+            <input type="checkbox" name="forSale" id="forSale" <% if (game.forSale) { %>checked<% } %>/>
 
-        <label for="price">Price: $</label>
-        <input type="text" name="price" id="price" value="<%= game.price %>"/>
+            <label for="price">Price: $</label>
+            <input type="text" name="price" id="price" value="<%= game.price %>"/>
 
-        <button type="submit">Add Changes</button>
-    </form>
+            <button type="submit">Add Changes</button>
+        </form>
+    </div>
 </body>
 </html>

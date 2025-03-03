@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Shop</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>All Games For Sale</h1>
-    <ul>
-        <% users.forEach((user) => { %>
-            <% const games = user.games %>
-            <% games.forEach((game) => { %>
-                <% if (game.forSale) { %>
-                    <li>
-                        <a href="/shop/<%= user._id %>/<%= game._id %>">
-                        <%= game.name %> for the <%= game.console %>: $<%= game.price %>
-                        </a>
-                    </li>
-                <% } %>
+    <div class="shop-body">
+        <div class="shop-header">
+            <h1>Welcome To the eGame Store</h1>
+        </div>
+        <ul>
+            <% users.forEach((user) => { %>
+                <% const games = user.games %>
+                <% games.forEach((game) => { %>
+                    <% if (game.forSale) { %>
+                        <li>
+                            <a href="/shop/<%= user._id %>/<%= game._id %>">
+                            <%= game.name %> for the <%= game.console %>: $<%= game.price %>
+                            </a>
+                        </li>
+                    <% } %>
+                <% }) %>
             <% }) %>
-        <% }) %>
-    </ul>
+        </ul>
+    </div>
 </body>
 </html>

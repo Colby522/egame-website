@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Purchasing <%= game.name %></title>
 </head>
 <body>
-    <h1><%= game.name %></h1>
-    <h3>Credit Card Info</h3>
-        <p>Card Holder Full Name:</p>
-        <p>Credit Card Number:</p>
-        <p>Expiration Date:</p>
-        <p>CVV:</p>
-        <p>Zip Code</p>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="purchase-body">
+        <h1 class="purchase-header"><%= game.name %></h1>
+        <form class="purchase-form">
+            <h3 class="form-title">Credit Card Info</h3>
+                <label>Card Holder Full Name:</label>
+                <input type="text">
+                <label>Credit Card Number:</label>
+                <input type="text">
+                <label>Expiration Date:</label>
+                <input type="text">
+                <label>CVV:</label>
+                <input type="text">
+                <label>Zip Code</label>
+                <input type="text">
 
-    <h3>Mailing Info</h3>
-        <p>Address Line 1:</p>
-        <p>Address Line 2(Optional):</p>
-        <p>State:</p>
-        <p>Zip Code</p>
+            <h3 class="form-title">Mailing Info</h3>
+                <label>Address Line 1:</label>
+                <input type="text">
+                <label>Address Line 2(Optional):</label>
+                <input type="text">
+                <label>State:</label>
+                <input type="text">
+                <label>Zip Code</label>
+                <input type="text">
     
-    <p>Total: $<%= game.price %></p>
-    <form action="/shop/<%= user._id %>/<%= game._id %>?_method=PUT" method="POST">
-        <button type="submit">Purchase</button>
-    </form>
+            <p class="total">Total: $<%= game.price %></p>
+        </form>
+        <form class="purchase-submit" action="/shop/<%= user._id %>/<%= game._id %>?_method=PUT" method="POST">
+            <button type="submit">Purchase</button>
+        </form>
+    </div>
 </body>
 </html>

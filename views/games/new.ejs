@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Add a New Game</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New Game</h1>
-    <form action="/users/<%=user._id%>/games" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" />
+    <div class="new-body">
+        <form action="/users/<%=user._id%>/games" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" />
 
-        <label for="console">Console:</label>
-        <input type="text" name="console" id="console" />
+            <label for="console">Console:</label>
+            <input type="text" name="console" id="console" />
 
-        <label for="condition">Condition?</label>
-        <select name="condition" id="condition">
-            <option value="unopened">Unopened</option>
-            <option value="good">Good</option>
-            <option value="okay">Okay</option>
-            <option value="bad">Bad</option>
-            <option value="doesntWork">Doesn't Work</option>
-        </select>
+            <label for="condition">Condition?</label>
+            <select name="condition" id="condition">
+                <option value="unopened">Unopened</option>
+                <option value="good">Good</option>
+                <option value="okay">Okay</option>
+                <option value="bad">Bad</option>
+                <option value="doesntWork">Doesn't Work</option>
+            </select>
         
-        <label for="forSale">Make this game for sale?</label>
-        <input type="checkbox" name="forSale" id="forSale" />
+            <label for="forSale">Make this game for sale?</label>
+            <input type="checkbox" name="forSale" id="forSale" />
 
-        <label for="price">Price: $</label>
-        <input type="text" name="price" id="price" />
+            <label for="price">Price: $</label>
+            <input type="text" name="price" id="price" />
 
-        <button type="submit">Add Game</button>
-    </form>
+            <button type="submit">Add Game</button>
+        </form>
+    </div> 
 </body>
 </html>

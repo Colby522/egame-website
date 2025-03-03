@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Home Page</title>
 </head>
-<body>
-  <%- include('./partials/_navbar.ejs') %>
-  <h1>Welcome to eGame</h1>
-  <h4>A place to sell and keep track of all your games</h4>
+<body class="index-body">
+  <div class="index-container">
+    <div class="text-container">
+      <h1 class="main-header">Welcome to eGame</h1>
+      <h4 class="subheader">The best place to log and sell all physical copies of your games!</h4>
+    </div>
+    <div class="auth-links">
+      <a class="signup-link" href="/auth/sign-up">Sign Up</a>
+      <a class="signin-link" href="/auth/sign-in">Sign In</a>
+    </div>
+  </div>
 </body>
 </html>

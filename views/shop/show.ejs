@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/show.css">
     <title><%= game.name %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= game.name %> for the <%= game.console %></h1>
-    <p>$<%= game.price %></p>
-    <p>Posted for sale by <%= user.username %></p>
+    <div class="show-body">
+        <div class="show-header">
+            <h1><%= game.name %> for the <%= game.console %></h1>
+        </div>
+        <div class="show-sidebar">
 
-    <a href="/shop/<%= user._id %>/<%= game._id %>/purchase">
-        Buy This Game
-    </a>
+            <p id="price">$<%= game.price %></p>
+            <p>Posted for sale by <%= user.username %></p>
+
+            <div class="show-actions">
+                <a id="buy-game" href="/shop/<%= user._id %>/<%= game._id %>/purchase">
+                    Buy This Game
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

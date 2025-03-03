@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/show.css">
     <title><%= game.name %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= game.name %> on the <%= game.console %></h1>
-    <p>Condition: <%= game.condition %></p>
-    <% if (game.forSale) { %>
-        <p>This game is for sale.</p>
-    <% } else { %>
-        <p>This game is not for sale</p>
-    <% } %>
-    <p>Price: $<%- game.price %></p>
+    <div class="show-body">
+        <div class="show-header">
+            <h1><%= game.name %> on the <%= game.console %></h1>
+            <div class="show-sidebar">
+                <div class="show-actions">
+                    <a href="/users/<%= user._id %>/games/<%= game._id %>/edit">
+                        Edit this Game
+                    </a>
 
-    <a href="/users/<%= user._id %>/games/<%= game._id %>/edit">
-        Edit this Game
-    </a>
+                    <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=DELETE"
+                        method="POST">
+                        <button type="submit">Delete this game</button>
+                    </form>
+                </div>
+                <p>Condition: <%= game.condition %></p>
 
-    <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=DELETE"
-        method="POST">
-        <button type="submit">Delete this game</button>
-    </form>
+                <% if (game.forSale) { %>
+                    <p>This game is for sale.</p>
+                <% } else { %>
+                    <p>This game is not for sale</p>
+                <% } %>
+
+                <p>Price: $<%- game.price %></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
